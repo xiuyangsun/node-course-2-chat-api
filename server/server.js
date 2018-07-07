@@ -22,11 +22,10 @@ io.on('connection',(socket)=>{
   socket.on('createMessage',(message,callback)=>{
     console.log("Created message",message);
     io.emit('newMessage',generateMessage(message.from,message.text));
-    callback('This is from the server.');
+    callback();
   });
 
   socket.on('createLocationMessage',(coords)=>{
-    console.log(coords);
     io.emit('newLocationMessage',generateLocationMessage('Admin',coords.latitude,coords.longitude));
   });
 
